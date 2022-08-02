@@ -11,15 +11,17 @@ export default function App() {
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
-        <TouchableOpacity>
-          <Image source={diceIcon}/>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={settingsIcon}/>
-        </TouchableOpacity>
-        <TouchableOpacity>  
-          <Image source={rollAgainIcon}/>
-        </TouchableOpacity>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity>
+            <Image source={diceIcon}/>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={settingsIcon}/>
+          </TouchableOpacity>
+          <TouchableOpacity>  
+            <Image source={rollAgainIcon}/>
+          </TouchableOpacity>
+         </View> 
       </ImageBackground>
     </View>
   );
@@ -33,7 +35,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center"
   },
-  icons:{
-    justifyContent: "center"
+  iconContainer:{
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 });
