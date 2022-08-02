@@ -12,7 +12,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
-        <View style={styles.iconContainer}>
+        <View>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity>
               <Image source={diceIcon}/>
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   },
   navImage: {
     flexDirection: 'row',
-    justifyContent:  'space-around'
+    justifyContent:  'space-around',
+    padding: 10
   }
 });
