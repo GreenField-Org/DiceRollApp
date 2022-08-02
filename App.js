@@ -6,21 +6,24 @@ const backgroundImage = require('./Images/blackVelvet.png')
 const diceIcon = require('./Images/diceIcon.png')
 const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
+const woodenNav = require('./Images/woodenNav.png')
 
 export default function App() {
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
         <View style={styles.iconContainer}>
-          <TouchableOpacity>
-            <Image source={diceIcon}/>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={settingsIcon}/>
-          </TouchableOpacity>
-          <TouchableOpacity>  
-            <Image source={rollAgainIcon}/>
-          </TouchableOpacity>
+          <ImageBackground source={woodenNav} style={styles.navImage}>
+            <TouchableOpacity>
+              <Image source={diceIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image source={settingsIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity>  
+              <Image source={rollAgainIcon}/>
+            </TouchableOpacity>
+          </ImageBackground>
          </View> 
       </ImageBackground>
     </View>
@@ -35,8 +38,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center"
   },
-  iconContainer:{
+  navImage: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent:  'space-around'
   }
 });
