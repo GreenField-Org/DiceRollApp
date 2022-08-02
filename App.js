@@ -11,7 +11,7 @@ const woodenNav = require('./Images/woodenNav.png')
 export default function App() {
   return (
     <View style={styles.container}>
-      <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View style={styles.iconContainer}>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity>
@@ -25,7 +25,6 @@ export default function App() {
             </TouchableOpacity>
           </ImageBackground>
          </View> 
-      </ImageBackground>
     </View>
   );
 }
