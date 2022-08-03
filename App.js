@@ -1,11 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
+
+
+const backgroundImage = require('./Images/blackVelvet.png')
+const diceIcon = require('./Images/diceIcon.png')
+const settingsIcon = require('./Images/settingsIcon.png')
+const rollAgainIcon = require('./Images/rollAgainIcon.png')
+const woodenNav = require('./Images/woodenNav.png')
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
+        <View>
+          <ImageBackground source={woodenNav} style={styles.navImage}>
+            <TouchableOpacity>
+              <Image source={diceIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image source={settingsIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity>  
+              <Image source={rollAgainIcon}/>
+            </TouchableOpacity>
+          </ImageBackground>
+         </View> 
     </View>
   );
 }
@@ -13,8 +32,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  navImage: {
+    flexDirection: 'row',
+    justifyContent:  'space-around',
+    padding: 10
+  }
 });
