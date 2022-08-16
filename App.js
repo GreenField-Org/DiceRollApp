@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated} from 'react-native';
 
 
 const backgroundImage = require('./Images/blackVelvet.png')
@@ -33,7 +33,11 @@ export default function App() {
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
           <ImageBackground source={woodenNav} style={styles.navImage}>
-            <TouchableOpacity>
+            <ExpandedDice expanded={isExpanded} />
+            <TouchableOpacity
+            onPress={() => {
+              setIsExpanded(!isExpanded);
+            }}>
               <Image source={diceIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
