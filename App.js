@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 
 
@@ -8,7 +8,26 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
+const ExpandedDice = ({ expanded = false }) => {
+  const [height] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(height, {
+      toValue: !expanded ? 200 : 0,
+      duration: 150,
+      useNativeDriver: false
+    }).start();
+  }, [expanded, height]);
+
+  return (
+    <Animated.View
+      style={{ height, backgroundColor: "orange" }}
+    ></Animated.View>
+  );
+};
+
 export default function App() {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
