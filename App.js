@@ -8,12 +8,14 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
+const d4 = require('./Images/d4.png')
+
 const ExpandedDice = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 200 : 0,
+      toValue: !expanded ? 300 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
@@ -21,8 +23,17 @@ const ExpandedDice = ({ expanded = false }) => {
 
   return (
     <Animated.View
-      style={{ height, backgroundColor: "orange" }}
-    ></Animated.View>
+      style={{ height}}
+    >
+    <ImageBackground source={woodenNav} style={styles.navImage}>
+        <View>
+          <Image source={diceIcon}/>
+          <Image source={diceIcon}/>
+          <Image source={diceIcon}/>
+          <Image source={diceIcon}/>
+        </View>
+    </ImageBackground>
+    </Animated.View>
   );
 };
 
@@ -32,8 +43,8 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
+        <ExpandedDice expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
-            <ExpandedDice expanded={isExpanded} />
             <TouchableOpacity
             onPress={() => {
               setIsExpanded(!isExpanded);
