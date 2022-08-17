@@ -8,8 +8,7 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
-const d4 = require('./Images/d4.png')
-
+// Expanding Dice Tray 
 const ExpandedDice = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
@@ -25,17 +24,21 @@ const ExpandedDice = ({ expanded = false }) => {
     <Animated.View
       style={{ height}}
     >
-    <ImageBackground source={woodenNav} style={styles.navImage}>
-        <View>
-          <Image source={diceIcon}/>
-          <Image source={diceIcon}/>
-          <Image source={diceIcon}/>
-          <Image source={diceIcon}/>
+        <View style={styles.expandedDice}>
+          <ImageBackground source={woodenNav}>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+            <Image source={diceIcon}/>
+          </ImageBackground>
         </View>
-    </ImageBackground>
     </Animated.View>
   );
 };
+//End Expanded Dice Tray
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -43,7 +46,7 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
-        <ExpandedDice expanded={isExpanded}/>
+          <ExpandedDice expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
@@ -75,5 +78,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent:  'space-around',
     padding: 10
+  },
+  expandedDice: {
+    flex: 4
   }
 });
