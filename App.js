@@ -39,11 +39,12 @@ const ExpandedSettings = ({ expanded = false }) => {
 //End Expanded Settings Tray
 
 export default function App() {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <View style={styles.container}>
-      <ExpandedSettings/>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
+          <ExpandedSettings expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity>
               <Image source={diceIcon}/>
