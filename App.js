@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 
 
@@ -8,9 +8,40 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
+const ExpandedSettings = ({ expanded = false }) => {
+  const [height] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(height, {
+      toValue: !expanded ? 130 : 0,
+      duration: 150,
+      useNativeDriver: false
+    }).start();
+  }, [expanded, height]);
+
+  return (
+    <Animated.View
+      style={{ height}}
+    >
+        <View style={styles.expandedDice}>
+          <ImageBackground source={woodenNav}>
+            <View style={styles.navImage}>
+              <Image source={settingsIcon}/>
+            </View>
+            <View style={styles.navImage}>
+              <Image source={settingsIcon}/>
+            </View>
+          </ImageBackground>
+        </View>
+    </Animated.View>
+  );
+};
+//End Expanded Settings Tray
+
 export default function App() {
   return (
     <View style={styles.container}>
+      <ExpandedSettings/>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
           <ImageBackground source={woodenNav} style={styles.navImage}>
