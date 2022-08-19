@@ -48,7 +48,10 @@ export default function App() {
             <TouchableOpacity>
               <Image source={diceIcon}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+              setIsExpanded(!isExpanded);
+            }}>
               <Image source={settingsIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>  
