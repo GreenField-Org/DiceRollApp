@@ -14,7 +14,7 @@ const ExpandedDice = ({ expanded = false }) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 300 : 0,
+      toValue: !expanded ? 130 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
@@ -26,13 +26,17 @@ const ExpandedDice = ({ expanded = false }) => {
     >
         <View style={styles.expandedDice}>
           <ImageBackground source={woodenNav}>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
-            <Image source={diceIcon}/>
+            <View style={styles.navImage}>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+            </View>
+            <View style={styles.navImage}>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+            </View>
           </ImageBackground>
         </View>
     </Animated.View>
@@ -81,5 +85,9 @@ const styles = StyleSheet.create({
   },
   expandedDice: {
     flex: 4
+  },
+  trayDice :{
+    width: 50,
+    height: 50
   }
 });
