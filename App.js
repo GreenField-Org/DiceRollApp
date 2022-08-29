@@ -8,6 +8,8 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
+// Expanding Dice Tray 
+const ExpandedDice = ({ expanded = false }) => {
 const ExpandedSettings = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
@@ -26,6 +28,15 @@ const ExpandedSettings = ({ expanded = false }) => {
         <View style={styles.expandedDice}>
           <ImageBackground source={woodenNav}>
             <View style={styles.navImage}>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+            </View>
+            <View style={styles.navImage}>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={diceIcon} style={styles.trayDice}/>
               <Image source={settingsIcon}/>
             </View>
             <View style={styles.navImage}>
@@ -36,7 +47,9 @@ const ExpandedSettings = ({ expanded = false }) => {
     </Animated.View>
   );
 };
+//End Expanded Dice Tray
 //End Expanded Settings Tray
+
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -44,9 +57,13 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
+          <ExpandedDice expanded={isExpanded}/>
           <ExpandedSettings expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {
+              setIsExpanded(!isExpanded);
+            }}>
               <Image source={diceIcon}/>
             </TouchableOpacity>
             <TouchableOpacity
@@ -76,5 +93,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent:  'space-around',
     padding: 10
+  },
+  expandedDice: {
+    flex: 4
+  },
+  trayDice :{
+    width: 50,
+    height: 50
   }
 });
