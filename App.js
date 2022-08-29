@@ -10,6 +10,7 @@ const woodenNav = require('./Images/woodenNav.png')
 
 // Expanding Dice Tray 
 const ExpandedDice = ({ expanded = false }) => {
+const ExpandedSettings = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -36,6 +37,10 @@ const ExpandedDice = ({ expanded = false }) => {
               <Image source={diceIcon} style={styles.trayDice}/>
               <Image source={diceIcon} style={styles.trayDice}/>
               <Image source={diceIcon} style={styles.trayDice}/>
+              <Image source={settingsIcon}/>
+            </View>
+            <View style={styles.navImage}>
+              <Image source={settingsIcon}/>
             </View>
           </ImageBackground>
         </View>
@@ -43,6 +48,8 @@ const ExpandedDice = ({ expanded = false }) => {
   );
 };
 //End Expanded Dice Tray
+//End Expanded Settings Tray
+
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -51,6 +58,7 @@ export default function App() {
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
           <ExpandedDice expanded={isExpanded}/>
+          <ExpandedSettings expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
@@ -58,7 +66,10 @@ export default function App() {
             }}>
               <Image source={diceIcon}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+              setIsExpanded(!isExpanded);
+            }}>
               <Image source={settingsIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>  
