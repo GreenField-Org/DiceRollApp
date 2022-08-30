@@ -8,9 +8,21 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
-// Expanding Dice Tray 
-const ExpandedDice = ({ expanded = false }) => {
+// Expanding Dice Tray
+
 const ExpandedSettings = ({ expanded = false }) => {
+  const [height] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(height, {
+      toValue: !expanded ? 130 : 0,
+      duration: 150,
+      useNativeDriver: false
+    }).start();
+  }, [expanded, height]);
+}
+
+const ExpandedDice = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -58,7 +70,7 @@ export default function App() {
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
           <ExpandedDice expanded={isExpanded}/>
-          <ExpandedSettings expanded={isExpanded}/>
+          <ExpandedDice expanded={isExpanded}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
@@ -80,6 +92,7 @@ export default function App() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
