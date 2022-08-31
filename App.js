@@ -13,7 +13,7 @@ const ExpandedSettings = ({ expanded = false }) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 130 : 0,
+      toValue: !expanded ? 200 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
