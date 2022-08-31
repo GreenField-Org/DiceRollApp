@@ -13,9 +13,10 @@ const d6 = require('./Images/d6.png')
 const d8 = require('./Images/d8.png')
 const d10 = require('./Images/d10.png')
 const d12 = require('./Images/d12.png')
+//dice images from https://game-icons.net/tags/dice.html
+
 
 // Expanding Dice Tray
-
 const ExpandedDice = ({ expanded = false }) => {
   const [height] = useState(new Animated.Value(0));
 
