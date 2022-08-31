@@ -7,6 +7,12 @@ const diceIcon = require('./Images/diceIcon.png')
 const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
+const d20 = require('./Images/d20.png')
+const d4 = require('./Images/d4.png')
+const d6 = require('./Images/d6.png')
+const d8 = require('./Images/d8.png')
+const d10 = require('./Images/d10.png')
+const d12 = require('./Images/d12.png')
 
 // Expanding Dice Tray
 
@@ -28,15 +34,14 @@ const ExpandedDice = ({ expanded = false }) => {
         <View style={styles.expandedDice}>
           <ImageBackground source={woodenNav}>
             <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
+              <TouchableOpacity><Image source={d20} style={styles.trayDice}/></TouchableOpacity>
+              <TouchableOpacity><Image source={d4} style={styles.trayDice}/></TouchableOpacity>
+              <TouchableOpacity><Image source={d6} style={styles.trayDice}/></TouchableOpacity>
             </View>
             <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
+            <TouchableOpacity><Image source={d8} style={styles.trayDice}/></TouchableOpacity>
+            <TouchableOpacity><Image source={d10} style={styles.trayDice}/></TouchableOpacity>
+            <TouchableOpacity><Image source={d12} style={styles.trayDice}/></TouchableOpacity>
             </View>
           </ImageBackground>
         </View>
