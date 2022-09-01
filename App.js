@@ -8,9 +8,41 @@ const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
 
-// Expanding Dice Tray
+// Expanding Dice Tray Component
+const ExpandedDice = (props) => {
+  return(
+    <View style={styles.expandedDice}>
+    <ImageBackground source={woodenNav}>
+      <View style={styles.navImage}>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+      </View>
+      <View style={styles.navImage}>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+      </View>
+    </ImageBackground>
+  </View>
+  )
+}
 
-const ExpandedDice = ({ expanded = false }) => {
+//Expanded Settings Component
+const ExpandedSettings= (props) =>{
+  return(
+    <View style={styles.expandedDice}>
+    <ImageBackground source={woodenNav}>
+      <View style={styles.navImage}>
+        <Image source={settingsIcon}/>
+      </View>
+    </ImageBackground>
+    </View>
+  )
+}
+
+const ExpandedTray = ({ expanded = false, ...props}) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -25,21 +57,7 @@ const ExpandedDice = ({ expanded = false }) => {
     <Animated.View
       style={{ height}}
     >
-        <View style={styles.expandedDice}>
-          <ImageBackground source={woodenNav}>
-            <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-            </View>
-            <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-            </View>
-          </ImageBackground>
-        </View>
+        {props.trayView}
     </Animated.View>
   );
 };
@@ -51,7 +69,8 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
-          <ExpandedDice expanded={isExpanded}/>
+          <ExpandedTray expanded={isExpanded} trayView={ExpandedDice}/>
+          <ExpandedTray expanded={isExpanded} trayView={ExpandedSettings}/>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
