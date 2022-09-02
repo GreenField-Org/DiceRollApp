@@ -7,6 +7,13 @@ const diceIcon = require('./Images/diceIcon.png')
 const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
+const d20 = require('./Images/d20.png')
+const d4 = require('./Images/d4.png')
+const d6 = require('./Images/d6.png')
+const d8 = require('./Images/d8.png')
+const d10 = require('./Images/d10.png')
+const d12 = require('./Images/d12.png')
+//dice images from https://game-icons.net/tags/dice.html
 
 // Expanding Dice Tray Component
 const ExpandedDice = (props) => {
@@ -43,11 +50,12 @@ const ExpandedSettings= (props) =>{
 }
 
 const ExpandedDiceTray = ({ expanded = false, ...props}) => {
+
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 130 : 0,
+      toValue: !expanded ? 200 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
