@@ -42,7 +42,7 @@ const ExpandedSettings= (props) =>{
   )
 }
 
-const ExpandedTray = ({ expanded = false, ...props}) => {
+const ExpandedDiceTray = ({ expanded = false, ...props}) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -57,30 +57,52 @@ const ExpandedTray = ({ expanded = false, ...props}) => {
     <Animated.View
       style={{ height}}
     >
-        {props.trayView}
+        {props.children}
+    </Animated.View>
+  );
+};
+
+const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
+  const [height] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(height, {
+      toValue: !expanded ? 130 : 0,
+      duration: 150,
+      useNativeDriver: false
+    }).start();
+  }, [expanded, height]);
+
+  return (
+    <Animated.View
+      style={{ height}}
+    >
+        {props.children}
     </Animated.View>
   );
 };
 //End Expanded Dice Tray
 
 export default function App() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [diceExpanded, setDiceExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(false);
+
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
-          <ExpandedTray expanded={isExpanded} trayView={ExpandedDice}/>
-          <ExpandedTray expanded={isExpanded} trayView={ExpandedSettings}/>
+          <ExpandedDiceTray expanded={diceExpanded}><ExpandedDice /></ExpandedDiceTray>
+          <ExpandedSettingsTray expanded={settingsExpanded}><ExpandedSettings /></ExpandedSettingsTray>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
-              setIsExpanded(!isExpanded);
+              setDiceExpanded(!diceExpanded);
             }}>
               <Image source={diceIcon}/>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-              setIsExpanded(!isExpanded);
+                setSettingsExpanded(!settingsExpanded);
             }}>
               <Image source={settingsIcon}/>
             </TouchableOpacity>
