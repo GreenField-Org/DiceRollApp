@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text, Pressable} from 'react-native';
 
 
 const backgroundImage = require('./Images/blackVelvet.png')
@@ -43,6 +43,13 @@ const ExpandedDice = (props) => {
 
 //Expanded Settings Component
 const ExpandedSettings= (props) =>{
+const soundImages = [require('./Images/switchoff.png'), require('./Images/switchon.png')] 
+const [sound, setSound] = useState(soundImages[0]);
+const toggleSound = () => {
+  if (sound === soundImages[1]){
+    setSound(soundImages[0])
+  }else setSound(soundImages[0])
+}
   return(
     <View style={styles.expandedSettings}>
     <ImageBackground source={woodenNav}>
@@ -58,7 +65,13 @@ const ExpandedSettings= (props) =>{
       </View>
       <View style={styles.navImage}>
         <Text style={styles.text}>Sound</Text>
-        <Image source={switchOff} style={styles.settingsImages}/>
+        <Pressable 
+        onPress={() => toggleSound}>
+          <Image 
+            source={sound} 
+            style={styles.settingsImages}
+          />
+          </Pressable>
       </View>
     </ImageBackground>
     </View>
