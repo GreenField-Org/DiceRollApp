@@ -7,10 +7,70 @@ const diceIcon = require('./Images/diceIcon.png')
 const settingsIcon = require('./Images/settingsIcon.png')
 const rollAgainIcon = require('./Images/rollAgainIcon.png')
 const woodenNav = require('./Images/woodenNav.png')
+const d20 = require('./Images/d20.png')
+const d4 = require('./Images/d4.png')
+const d6 = require('./Images/d6.png')
+const d8 = require('./Images/d8.png')
+const d10 = require('./Images/d10.png')
+const d12 = require('./Images/d12.png')
+//dice images from https://game-icons.net/tags/dice.html
 
-// Expanding Dice Tray
+// Expanding Dice Tray Component
+const ExpandedDice = (props) => {
+  return(
+    <View style={styles.expandedDice}>
+    <ImageBackground source={woodenNav}>
+      <View style={styles.navImage}>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+      </View>
+      <View style={styles.navImage}>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+        <Image source={diceIcon} style={styles.trayDice}/>
+      </View>
+    </ImageBackground>
+  </View>
+  )
+}
 
-const ExpandedDice = ({ expanded = false }) => {
+//Expanded Settings Component
+const ExpandedSettings= (props) =>{
+  return(
+    <View style={styles.expandedDice}>
+    <ImageBackground source={woodenNav}>
+      <View style={styles.navImage}>
+        <Image source={settingsIcon}/>
+      </View>
+    </ImageBackground>
+    </View>
+  )
+}
+
+const ExpandedDiceTray = ({ expanded = false, ...props}) => {
+
+  const [height] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(height, {
+      toValue: !expanded ? 200 : 0,
+      duration: 150,
+      useNativeDriver: false
+    }).start();
+  }, [expanded, height]);
+
+  return (
+    <Animated.View
+      style={{ height}}
+    >
+        {props.children}
+    </Animated.View>
+  );
+};
+
+const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
   const [height] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -25,43 +85,32 @@ const ExpandedDice = ({ expanded = false }) => {
     <Animated.View
       style={{ height}}
     >
-        <View style={styles.expandedDice}>
-          <ImageBackground source={woodenNav}>
-            <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-            </View>
-            <View style={styles.navImage}>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-              <Image source={diceIcon} style={styles.trayDice}/>
-            </View>
-          </ImageBackground>
-        </View>
+        {props.children}
     </Animated.View>
   );
 };
 //End Expanded Dice Tray
 
 export default function App() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [diceExpanded, setDiceExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(false);
+
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} resizeMode="cover" style={styles.image}/>
         <View>
-          <ExpandedDice expanded={isExpanded}/>
+          <ExpandedDiceTray expanded={diceExpanded}><ExpandedDice /></ExpandedDiceTray>
+          <ExpandedSettingsTray expanded={settingsExpanded}><ExpandedSettings /></ExpandedSettingsTray>
           <ImageBackground source={woodenNav} style={styles.navImage}>
             <TouchableOpacity
             onPress={() => {
-              setIsExpanded(!isExpanded);
+              setDiceExpanded(!diceExpanded);
             }}>
               <Image source={diceIcon}/>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-              setIsExpanded(!isExpanded);
+                setSettingsExpanded(!settingsExpanded);
             }}>
               <Image source={settingsIcon}/>
             </TouchableOpacity>
