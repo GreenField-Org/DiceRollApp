@@ -21,15 +21,14 @@ const ExpandedDice = (props) => {
     <View style={styles.expandedDice}>
     <ImageBackground source={woodenNav}>
       <View style={styles.navImage}>
-        <Image source={diceIcon} style={styles.trayDice}/>
-        <Image source={diceIcon} style={styles.trayDice}/>
-        <Image source={diceIcon} style={styles.trayDice}/>
+        <TouchableOpacity><Image source={d20} style={styles.trayDice}/></TouchableOpacity>
+        <TouchableOpacity><Image source={d4} style={styles.trayDice}/></TouchableOpacity>
+        <TouchableOpacity><Image source={d6} style={styles.trayDice}/></TouchableOpacity>
       </View>
       <View style={styles.navImage}>
-        <Image source={diceIcon} style={styles.trayDice}/>
-        <Image source={diceIcon} style={styles.trayDice}/>
-        <Image source={diceIcon} style={styles.trayDice}/>
-        <Image source={diceIcon} style={styles.trayDice}/>
+      <TouchableOpacity><Image source={d8} style={styles.trayDice}/></TouchableOpacity>
+      <TouchableOpacity><Image source={d10} style={styles.trayDice}/></TouchableOpacity>
+      <TouchableOpacity><Image source={d12} style={styles.trayDice}/></TouchableOpacity>
       </View>
     </ImageBackground>
   </View>
@@ -55,7 +54,7 @@ const ExpandedDiceTray = ({ expanded = false, ...props}) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 200 : 0,
+      toValue: !expanded ? 140 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
