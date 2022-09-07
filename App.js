@@ -161,7 +161,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   text: {
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Times New Roman',
+    fontSize: 20
   },
   settingsImages: {
     width: 50,
