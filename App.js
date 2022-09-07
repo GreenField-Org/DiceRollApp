@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text} from 'react-native';
 
 
 const backgroundImage = require('./Images/blackVelvet.png')
@@ -14,6 +14,12 @@ const d8 = require('./Images/d8.png')
 const d10 = require('./Images/d10.png')
 const d12 = require('./Images/d12.png')
 //dice images from https://game-icons.net/tags/dice.html
+const blackBackground  = require('./Images/blackBackground.png')
+const redBackground = require('./Images/redBackground.png')
+const whiteBackground = require('./Images/whiteBackground.png')
+const woodenBackground = require('./Images/woodBackground.png')
+const switchOn = require('./Images/switchon.png')
+const switchOff = require('./Images/switchoff.png')
 
 // Expanding Dice Tray Component
 const ExpandedDice = (props) => {
@@ -39,10 +45,21 @@ const ExpandedDice = (props) => {
 //Expanded Settings Component
 const ExpandedSettings= (props) =>{
   return(
-    <View style={styles.expandedDice}>
+    <View style={styles.expandedSettings}>
     <ImageBackground source={woodenNav}>
       <View style={styles.navImage}>
-        <Image source={settingsIcon}/>
+        <Text style={styles.text}>Settings</Text>
+      </View>
+      <View style={styles.navImage}>
+        <Text style={styles.text}>Background</Text>
+        <Image source={blackBackground} style={styles.settingsImages}/>
+        <Image source={redBackground} style={styles.settingsImages}/>
+        <Image source={whiteBackground} style={styles.settingsImages}/>
+        <Image source={woodenBackground} style={styles.settingsImages}/>
+      </View>
+      <View style={styles.navImage}>
+        <Text style={styles.text}>Sound</Text>
+        <Image source={switchOff} style={styles.settingsImages}/>
       </View>
     </ImageBackground>
     </View>
@@ -75,7 +92,7 @@ const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 130 : 0,
+      toValue: !expanded ? 170 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
@@ -139,6 +156,16 @@ const styles = StyleSheet.create({
   },
   expandedDice: {
     flex: 4
+  },
+  expandedSettings: {
+    flex: 1
+  },
+  text: {
+    color: 'white'
+  },
+  settingsImages: {
+    width: 50,
+    height: 50
   },
   trayDice :{
     width: 50,
