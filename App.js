@@ -18,8 +18,6 @@ const blackBackground  = require('./Images/blackBackground.png')
 const redBackground = require('./Images/redBackground.png')
 const whiteBackground = require('./Images/whiteBackground.png')
 const woodenBackground = require('./Images/woodBackground.png')
-const switchOn = require('./Images/switchon.png')
-const switchOff = require('./Images/switchoff.png')
 
 // Expanding Dice Tray Component
 const ExpandedDice = (props) => {
@@ -61,8 +59,8 @@ const ExpandedSettings= (props) =>{
       <View style={styles.navImage}>
         <Text style={styles.text}>Sound</Text>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: "#767577", true: "#767577" }}
+          thumbColor={isEnabled ? "#df9f48" : "#df9f48"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={isEnabled}
