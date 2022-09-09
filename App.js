@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text, Pressable} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text, Switch} from 'react-native';
 
 
 const backgroundImage = require('./Images/blackVelvet.png')
@@ -43,13 +43,8 @@ const ExpandedDice = (props) => {
 
 //Expanded Settings Component
 const ExpandedSettings= (props) =>{
-const soundImages = [require('./Images/switchoff.png'), require('./Images/switchon.png')] 
-const [sound, setSound] = useState(soundImages[0]);
-const toggleSound = () => {
-  if (sound === soundImages[1]){
-    setSound(soundImages[0])
-  }else setSound(soundImages[0])
-}
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return(
     <View style={styles.expandedSettings}>
     <ImageBackground source={woodenNav}>
@@ -65,13 +60,13 @@ const toggleSound = () => {
       </View>
       <View style={styles.navImage}>
         <Text style={styles.text}>Sound</Text>
-        <Pressable 
-        onPress={() => toggleSound}>
-          <Image 
-            source={sound} 
-            style={styles.settingsImages}
-          />
-          </Pressable>
+        <Switch
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+      />
       </View>
     </ImageBackground>
     </View>
@@ -104,7 +99,7 @@ const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 170 : 0,
+      toValue: !expanded ? 160 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
