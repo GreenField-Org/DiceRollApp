@@ -115,7 +115,7 @@ const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
 
 export default function App() {
   const [diceExpanded, setDiceExpanded] = useState(false);
-  const [settingsExpanded, setSettingsExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(true);
 
   return (
     <View style={styles.container}>
