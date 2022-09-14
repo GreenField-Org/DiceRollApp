@@ -27,14 +27,14 @@ const ExpandedDice = (props) => {
     <View style={styles.expandedDice}>
     <ImageBackground source={woodenNav}>
       <View style={styles.navImage}>
-        <TouchableOpacity><Image source={d20} style={styles.trayDice}/></TouchableOpacity>
-        <TouchableOpacity><Image source={d4} style={styles.trayDice}/></TouchableOpacity>
-        <TouchableOpacity><Image source={d6} style={styles.trayDice}/></TouchableOpacity>
+        <TouchableOpacity><Image source={d20} style={styles.trayDice} id={20}/></TouchableOpacity>
+        <TouchableOpacity><Image source={d4} style={styles.trayDice} id={4}/></TouchableOpacity>
+        <TouchableOpacity><Image source={d6} style={styles.trayDice} id={6}/></TouchableOpacity>
       </View>
       <View style={styles.navImage}>
-      <TouchableOpacity><Image source={d8} style={styles.trayDice}/></TouchableOpacity>
-      <TouchableOpacity><Image source={d10} style={styles.trayDice}/></TouchableOpacity>
-      <TouchableOpacity><Image source={d12} style={styles.trayDice}/></TouchableOpacity>
+      <TouchableOpacity><Image source={d8} style={styles.trayDice} id={8}/></TouchableOpacity>
+      <TouchableOpacity><Image source={d10} style={styles.trayDice} id={10}/></TouchableOpacity>
+      <TouchableOpacity><Image source={d12} style={styles.trayDice} id={12}/></TouchableOpacity>
       </View>
     </ImageBackground>
   </View>
