@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ImageBackground, Image, Animated, Text, Switch} from 'react-native';
 
 
 const backgroundImage = require('./Images/blackVelvet.png')
@@ -18,8 +18,6 @@ const blackBackground  = require('./Images/blackBackground.png')
 const redBackground = require('./Images/redBackground.png')
 const whiteBackground = require('./Images/whiteBackground.png')
 const woodenBackground = require('./Images/woodBackground.png')
-const switchOn = require('./Images/switchon.png')
-const switchOff = require('./Images/switchoff.png')
 
 // Expanding Dice Tray Component
 const ExpandedDice = (props) => {
@@ -43,6 +41,8 @@ const ExpandedDice = (props) => {
 
 //Expanded Settings Component
 const ExpandedSettings= (props) =>{
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return(
     <View style={styles.expandedSettings}>
     <ImageBackground source={woodenNav}>
@@ -58,7 +58,13 @@ const ExpandedSettings= (props) =>{
       </View>
       <View style={styles.navImage}>
         <Text style={styles.text}>Sound</Text>
-        <Image source={switchOff} style={styles.settingsImages}/>
+        <Switch
+          trackColor={{ false: "#767577", true: "#767577" }}
+          thumbColor={isEnabled ? "#df9f48" : "#df9f48"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+      />
       </View>
     </ImageBackground>
     </View>
@@ -91,7 +97,7 @@ const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
 
   useEffect(() => {
     Animated.timing(height, {
-      toValue: !expanded ? 170 : 0,
+      toValue: !expanded ? 160 : 0,
       duration: 150,
       useNativeDriver: false
     }).start();
@@ -109,7 +115,7 @@ const ExpandedSettingsTray = ({ expanded = false, ...props}) => {
 
 export default function App() {
   const [diceExpanded, setDiceExpanded] = useState(false);
-  const [settingsExpanded, setSettingsExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(true);
 
   return (
     <View style={styles.container}>
