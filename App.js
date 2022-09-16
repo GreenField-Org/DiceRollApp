@@ -19,6 +19,15 @@ const redBackground = require('./Images/redBackground.png')
 const whiteBackground = require('./Images/whiteBackground.png')
 const woodenBackground = require('./Images/woodBackground.png')
 
+//Dice arrays
+const d4Arr = [1,2,3,4]
+const d6Arr = [1,2,3,4,5,6]
+const d8Arr= [1,2,3,4,5,6,7,8]
+const d10Arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const d12Arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+const d20Arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+
 // Expanding Dice Tray Component
 const ExpandedDice = (props) => {
   return(
